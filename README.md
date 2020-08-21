@@ -5,8 +5,6 @@
 This project gives you an **Apache Spark** cluster in standalone mode with a **JupyterLab** interface built on top of **Docker**.
 Learn Apache Spark through its **Scala**, **Python** (PySpark) and **R** (SparkR) API by running the Jupyter [notebooks](build/workspace/) with examples on how to read, process and write data.
 
-<p align="center"><img src="docs/image/cluster-architecture.png"></p>
-
 ![build](https://github.com/andre-marcos-perez/spark-standalone-cluster-on-docker/workflows/build/badge.svg?branch=master)
 ![jupyterlab-latest-version](https://img.shields.io/docker/v/andreper/jupyterlab/2.1.4-spark-3.0.0?color=yellow&label=jupyterlab-latest)
 ![spark-latest-version](https://img.shields.io/docker/v/andreper/spark-master/3.0.0-hadoop-2.7?color=yellow&label=spark-latest)
@@ -35,9 +33,11 @@ docker-compose up
 
 ### Cluster overview
 
+<p align="center"><img src="docs/image/cluster-architecture.png"></p>
+
 | Application            | URL                                      | Description                                                |
 | ---------------------- | ---------------------------------------- | ---------------------------------------------------------- |
-| JupyterLab             | [localhost:8888](http://localhost:8888/) | Cluster interface with built-in Jupyter notebooks          |
+| JupyterLab             | [localhost:8888](http://localhost:8888/) | JupyterLab with Scala, PySpark and SparkR notebooks        |
 | Apache Spark Master    | [localhost:8080](http://localhost:8080/) | Spark Master node                                          |
 | Apache Spark Worker I  | [localhost:8081](http://localhost:8081/) | Spark Worker node with 1 core and 512m of memory (default) |
 | Apache Spark Worker II | [localhost:8082](http://localhost:8082/) | Spark Worker node with 1 core and 512m of memory (default) |
@@ -61,31 +61,7 @@ docker-compose up
 
 ### Build from your local machine
 
-> **Note**: Local build is currently only supported on Linux OS distributions.
-
-1. Download the source code or clone the repository;
-2. Move to the build directory;
-
-```bash
-cd build
-```
-
-3. Edit the [build.yml](build/build.yml) file with your favorite tech stack version;
-4. Match those version on the [docker compose](build/docker-compose.yml) file;
-5. Build the images;
-
-```bash
-chmod +x build.sh ; ./build.sh
-```
-
-6. Build the cluster;
-
-```bash
-docker-compose up
-```
-
-7. Run Apache Spark code using the provided Jupyter [notebooks](build/workspace/) with Scala, PySpark and SparkR examples;
-8. Stop the cluster by typing `ctrl+c`.
+Checkout instructions [here](build/README.md).
 
 ## <a name="tech-stack"></a>Tech Stack
 
@@ -107,12 +83,12 @@ docker-compose up
 | Scala          | 0.10.0  | [Almond](https://almond.sh/)            |
 | R              | 1.1.1   | [IRkernel](https://irkernel.github.io/) |
 
-- Applications
+- <a name="apps">Applications
 
-| Component      | Version                 | Docker Tag                                           |
-| -------------- | ----------------------  | ---------------------------------------------------- |
-| Apache Spark   | 2.4.0 \| 2.4.4 \| 3.0.0 | **\<spark-version>**-hadoop-2.7                      |
-| JupyterLab     | 2.1.4                   | **\<jupyterlab-version>**-spark-**\<spark-version>** |
+| Component      | Version                 | Docker Tag                                           | Latest            |
+| -------------- | ----------------------  | ---------------------------------------------------- | ----------------- |
+| Apache Spark   | 2.4.0 \| 2.4.4 \| 3.0.0 | **\<spark-version>**-hadoop-2.7                      | 3.0.0-hadoop-2.7  |
+| JupyterLab     | 2.1.4                   | **\<jupyterlab-version>**-spark-**\<spark-version>** | 2.1.4-spark-3.0.0 |
 
 > Apache Spark R API (SparkR) is only supported on version **2.4.4**. Full list can be found [here](https://cran.r-project.org/src/contrib/Archive/SparkR/).
 
