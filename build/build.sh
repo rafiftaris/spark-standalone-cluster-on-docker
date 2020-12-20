@@ -15,6 +15,7 @@ SHOULD_BUILD_JUPYTERLAB="$(grep -m 1 build_jupyter build.yml | grep -o -P '(?<="
 SCALA_VERSION="$(grep -m 1 scala build.yml | grep -o -P '(?<=").*(?=")')"
 SPARK_VERSION="$(grep -m 1 spark build.yml | grep -o -P '(?<=").*(?=")')"
 HADOOP_VERSION="$(grep -m 1 hadoop build.yml | grep -o -P '(?<=").*(?=")')"
+GRAPHFRAMES_VERSION="$(grep -m 1 graphframes build.yml | grep -o -P '(?<=").*(?=")')"
 JUPYTERLAB_VERSION="$(grep -m 1 jupyterlab build.yml | grep -o -P '(?<=").*(?=")')"
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -92,6 +93,7 @@ function buildImages() {
     docker build \
       --build-arg build_date="${BUILD_DATE}" \
       --build-arg scala_version="${SCALA_VERSION}" \
+      --build-arg graphframes_version="${GRAPHFRAMES_VERSION}"\
       -f docker/base/Dockerfile \
       -t base:latest .
   fi

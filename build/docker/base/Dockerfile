@@ -30,6 +30,10 @@ ENV SCALA_HOME="/usr/bin/scala"
 ENV PATH=${PATH}:${SCALA_HOME}/bin
 ENV SHARED_WORKSPACE=${shared_workspace}
 
+# -- Install python libraries
+
+RUN python -m pip install graphframes
+
 # -- Runtime
 
 VOLUME ${shared_workspace}
