@@ -3,7 +3,7 @@ applications:
   spark: "3.0.0"
   hadoop: "2.7"
   jupyterlab: "2.1.4"
-  graphframes: "0.8.1"
+  graphframes: "0.8.0"
 build:
   build_base: "true"
   build_spark: "true"

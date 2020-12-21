@@ -32,8 +32,8 @@ ENV PYSPARK_PYTHON python3
 
 # -- Graphframes installation
 
-RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:${graphframes_version}-spark${spark_version}-s_2.12
-RUN wget http://dl.bintray.com/spark-packages/maven/graphframes/graphframes/${graphframes_version}-spark${spark_version}-s_2.12/graphframes-${graphframes_version}-spark${spark_version}-s_2.12.jar -qO $SPARK_HOME/jars/graphframes.jar
+RUN rm -rf $SPARK_HOME/jars/graphframes.jar || true
+RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:${graphframes_version}-spark3.0-s_2.12
 
 # -- Runtime
 

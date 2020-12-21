@@ -105,6 +105,7 @@ function buildImages() {
       --build-arg build_date="${BUILD_DATE}" \
       --build-arg spark_version="${SPARK_VERSION}" \
       --build-arg hadoop_version="${HADOOP_VERSION}" \
+      --build-arg graphframes_version="${GRAPHFRAMES_VERSION}"\
       -f docker/spark-base/Dockerfile \
       -t spark-base:${SPARK_VERSION}-hadoop-${HADOOP_VERSION} .
 
@@ -112,6 +113,7 @@ function buildImages() {
       --build-arg build_date="${BUILD_DATE}" \
       --build-arg spark_version="${SPARK_VERSION}" \
       --build-arg hadoop_version="${HADOOP_VERSION}" \
+      --build-arg graphframes_version="${GRAPHFRAMES_VERSION}"\
       -f docker/spark-master/Dockerfile \
       -t spark-master:${SPARK_VERSION}-hadoop-${HADOOP_VERSION} .
 
@@ -119,6 +121,7 @@ function buildImages() {
       --build-arg build_date="${BUILD_DATE}" \
       --build-arg spark_version="${SPARK_VERSION}" \
       --build-arg hadoop_version="${HADOOP_VERSION}" \
+      --build-arg graphframes_version="${GRAPHFRAMES_VERSION}"\
       -f docker/spark-worker/Dockerfile \
       -t spark-worker:${SPARK_VERSION}-hadoop-${HADOOP_VERSION} .
 
