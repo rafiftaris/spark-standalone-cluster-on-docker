@@ -33,7 +33,9 @@ ENV PYSPARK_PYTHON python3
 # -- Graphframes installation
 
 RUN rm -rf $SPARK_HOME/jars/graphframes.jar || true
-RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:${graphframes_version}-spark3.0-s_2.12
+RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:${graphframes_version}-spark3.0-s_2.12 --master spark://${SPARK_MASTER_HOST}:${SPARK_MASTER_PORT}
+RUN cp /root/.ivy2/jars/* $SPARK_HOME/jars/
+RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:${graphframes_version}-spark3.0-s_2.12 --master spark://${SPARK_MASTER_HOST}:${SPARK_MASTER_PORT}
 
 # -- Runtime
 
